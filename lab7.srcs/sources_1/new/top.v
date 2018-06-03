@@ -130,8 +130,8 @@ module top(
 
 
 
-
-
+    /* Memory segment */
+    
 
     data_mem u_data_mem (
       .a(ALU_result),        // input wire [7 : 0] a
