@@ -24,15 +24,34 @@ module top(
     input clk,
     input rst_n
     );
-    wire StallF, StallD;
+    wire StallF, StallD, ForwardAD, ForwardBD;
 
 
 
     /* Fetch section */
     wire [31:0] PC, PCPlus4F;
     reg [31:0] PCF;
-    
+    /* Decode segment */
+    wire RegWriteD;
+    wire MemtoRegD;
+    wire MemWriteD;
+    wire [2:0]ALUControlD;
+    wire RegDstD;
+    wire BranchD;
+    /* Excute segment */
 
+    /* Memory segment */
+    reg [31:0] ALUOutM, WriteDataM;
+
+    /* Write back segment */
+    reg[31:0] ReadDataW, ALUOutW;
+    reg RegWriteW, MemtoRegW;
+    reg [4:0] WriteRegW;
+    wire[31:0]ResultW;
+
+
+
+    /* Fetch section */
     assign PC = PCSrcD ? PCBranchD : PCPlus4F;
     always @(posedge clk)
     begin
@@ -53,12 +72,7 @@ module top(
 
 
     /* Decode segment */
-    wire RegWriteD;
-    wire MemtoRegD;
-    wire MemWriteD;
-    wire [2:0]ALUControlD;
-    wire RegDstD;
-    wire BranchD;
+    
     
 
     control u_control(
@@ -74,9 +88,12 @@ module top(
     
     wire EqualD;
     wire PCSrcD;
+    wire [31:0] reg_rd1, reg_rd2;
     assign PCSrcD = BranchD & EqualD;
-    
-    
+    wire [31:0] EqualD_a, EqualD_b;
+    assign EqualD_a = ForwardAD ? ALUOutM : reg_rd1;
+    assign EqualD_b = ForwardBD ? ALUOutM : reg_rd2;
+    assign EqualD = (EqualD_a == EqualD_b) ? 1 : 0;
     reg [31:0] InstrD;
     reg [31:0] PCPlus4D;
 
@@ -126,12 +143,8 @@ module top(
     );
     wire [31:0] data_mem_out;
 
-
     /* Write back segment */
-    reg[31:0] ReadDataW, ALUOutW;
-    reg RegWriteW, MemtoRegW;
-    reg [4:0] WriteRegW;
-    wire[31:0]ResultW;
+
     
     /**/
     always@(posedge clk)
