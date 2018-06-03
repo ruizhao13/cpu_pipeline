@@ -21,6 +21,13 @@
 
 
 module control(
-
+    input [5:0]Op,
+    input [4:0]Funct,
+    output reg RegWriteD,
+    output reg MemtoRegD,
+    output reg MemWriteD,
+    output reg [5:0] ALUControlD,
+    output reg RegDstD,
+    output reg BranchD
     );
 endmodule

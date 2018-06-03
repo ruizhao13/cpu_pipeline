@@ -24,10 +24,27 @@ module top(
     input clk,
     input rst_n
     );
+    wire StallF, StallD;
 
+
+
+    /* Fetch section */
+    wire [31:0] PC, PCPlus4F;
+    reg [31:0] PCF;
     
+
+    assign PC = PCSrcD ? PCBranchD : PCPlus4F;
+    always @(posedge clk)
+    begin
+      if (~StallF) begin
+        PCF <= PC;
+      end
+    end
+    assign PCPlus4F = PCF + 4;
+
+
     Inst_mem u_ins_mem (
-      .a(PC[5:0]),      // input wire [5 : 0] a
+      .a(PCF[5:0]),      // input wire [5 : 0] a
       //.d(d),      // input wire [31 : 0] d
       //.clk(clk),  // input wire clk
       //.we(),    // input wire we
@@ -36,6 +53,30 @@ module top(
 
 
     /* Decode segment */
+    wire RegWriteD;
+    wire MemtoRegD;
+    wire MemWriteD;
+    wire [2:0]ALUControlD;
+    wire RegDstD;
+    wire BranchD;
+    
+
+    control u_control(
+    .Op(InstrD[31:26]),
+    .Funct(InstrD[5:0]),
+    .RegWriteD(RegWriteD),
+    .MemtoRegD(MemtoRegD),
+    .MemWriteD(MemWriteD),
+    .ALUControlD(ALUControlD),
+    .RegDstD(RegDstD),
+    .BranchD(BranchD)
+    );
+    
+    wire EqualD;
+    wire PCSrcD;
+    assign PCSrcD = BranchD & EqualD;
+    
+    
     reg [31:0] InstrD;
     reg [31:0] PCPlus4D;
 
@@ -66,6 +107,9 @@ module top(
       PCPlus4D <= PCPlus4F;
       InstrD <= InstrF;
     end
+
+    wire [31:0]PCBranchD;
+    assign PCBranchD = SignImmD<<2 + PCPlus4D;
 
 
 
