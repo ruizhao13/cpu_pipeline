@@ -23,18 +23,18 @@
 module REG_FILE(
     input clk,
     input rst_n,
-    input [4:0] rAddr1,
-    input [4:0] rAddr2,
-    output [31:0] rDout1,    
-    output [31:0] rDout2,
-    input [4:0] wAddr,
-    input [31:0] wDin,
-    input  wEna
+    input [4:0] A1,
+    input [4:0] A2,
+    output [31:0] RD1,    
+    output [31:0] RD2,
+    input [4:0] A3,
+    input [31:0] WD3,
+    input  WE3
     );
     reg [31:0] regfile[0:31];
     
-    assign rDout1 = regfile[rAddr1];
-    assign rDout2 = regfile[rAddr2];
+    assign RD1 = regfile[A1];
+    assign RD2 = regfile[A2];
 
     integer i;
     always @(posedge clk)begin
@@ -46,8 +46,8 @@ module REG_FILE(
           regfile[i] <= 0;
         end
       end else begin
-        if (wEna) begin
-          regfile[wAddr] <= wDin;
+        if (WE3) begin
+          regfile[A3] <= WD3;
         end
       end
     end
