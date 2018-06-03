@@ -208,22 +208,4 @@ module top(
     end
     assign ResultW = MemtoRegW ? ReadDataW : ALUOutM;
 
-
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 endmodule
