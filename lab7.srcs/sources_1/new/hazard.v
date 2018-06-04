@@ -23,13 +23,18 @@
 module hazard(
     input [4:0] WriteRegM,
     input [4:0] WriteRegW,
+    input MemtoRegE,
     input RegWriteM,
     input RegWriteW,
     input [4:0] RsE,
     input [4:0] RtE,
+    input [4:0] RsD,
+    input [4:0] RtD,
     output [2:0] ForwardAE,
     output [2:0] ForwardBE,
-    output
+    output StallF,
+    output StallD,
+    output FlushE
     );
     always @(*)
     begin
@@ -51,4 +56,12 @@ module hazard(
         ForwardBE = 00;
       end
     end
+    wire lwstall;
+    assign lwstall = ((RsD == RtE) | (RtD == RtE)) & MemtoRegE;
+    assign StallF = StallD = FlushE =lwstall;
+
+
+
+
+
 endmodule
