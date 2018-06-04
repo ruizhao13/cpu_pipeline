@@ -1,7 +1,7 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2016.2 (win64) Build 1577090 Thu Jun  2 16:32:40 MDT 2016
-| Date         : Sun Jun 03 09:59:16 2018
+| Date         : Mon Jun 04 19:10:24 2018
 | Host         : DESKTOP-RONFFCB running 64-bit major release  (build 9200)
 | Command      : report_utilization -file Inst_mem_utilization_synth.rpt -pb Inst_mem_utilization_synth.pb
 | Design       : Inst_mem
@@ -30,16 +30,16 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| Slice LUTs*                |  128 |     0 |     47200 |  0.27 |
+| Slice LUTs*                |   32 |     0 |     47200 |  0.07 |
 |   LUT as Logic             |    0 |     0 |     47200 |  0.00 |
-|   LUT as Memory            |  128 |     0 |     19000 |  0.67 |
-|     LUT as Distributed RAM |  128 |     0 |           |       |
+|   LUT as Memory            |   32 |     0 |     19000 |  0.17 |
+|     LUT as Distributed RAM |   32 |     0 |           |       |
 |     LUT as Shift Register  |    0 |     0 |           |       |
 | Slice Registers            |   32 |     0 |     94400 |  0.03 |
 |   Register as Flip Flop    |   32 |     0 |     94400 |  0.03 |
 |   Register as Latch        |    0 |     0 |     94400 |  0.00 |
-| F7 Muxes                   |   64 |     0 |     31700 |  0.20 |
-| F8 Muxes                   |   32 |     0 |     15850 |  0.20 |
+| F7 Muxes                   |    0 |     0 |     31700 |  0.00 |
+| F8 Muxes                   |    0 |     0 |     15850 |  0.00 |
 +----------------------------+------+-------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
 
@@ -148,9 +148,7 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| RAMS64E  |  128 |  Distributed Memory |
-| MUXF7    |   64 |               MuxFx |
-| MUXF8    |   32 |               MuxFx |
+| RAMS64E  |   32 |  Distributed Memory |
 | FDRE     |   32 |        Flop & Latch |
 +----------+------+---------------------+
 

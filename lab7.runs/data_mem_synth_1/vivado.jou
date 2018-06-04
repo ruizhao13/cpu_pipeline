@@ -2,8 +2,8 @@
 # Vivado v2016.2 (64-bit)
 # SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
 # IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
-# Start of session at: Sun Jun 03 10:00:46 2018
-# Process ID: 15792
+# Start of session at: Mon Jun 04 19:00:02 2018
+# Process ID: 7912
 # Current directory: D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.runs/data_mem_synth_1
 # Command line: vivado.exe -log data_mem.vds -mode batch -messageDb vivado.pb -notrace -source data_mem.tcl
 # Log file: D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.runs/data_mem_synth_1/data_mem.vds

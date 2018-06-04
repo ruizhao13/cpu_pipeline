@@ -1,10 +1,10 @@
 -- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2016.2 (win64) Build 1577090 Thu Jun  2 16:32:40 MDT 2016
--- Date        : Sun Jun 03 09:59:16 2018
+-- Date        : Mon Jun 04 19:10:24 2018
 -- Host        : DESKTOP-RONFFCB running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               d:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/Inst_mem/Inst_mem_sim_netlist.vhdl
+--               D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/Inst_mem/Inst_mem_sim_netlist.vhdl
 -- Design      : Inst_mem
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -20,7 +20,7 @@ entity Inst_mem_spram is
     clk : in STD_LOGIC;
     d : in STD_LOGIC_VECTOR ( 31 downto 0 );
     we : in STD_LOGIC;
-    a : in STD_LOGIC_VECTOR ( 7 downto 0 )
+    a : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of Inst_mem_spram : entity is "spram";
@@ -451,353 +451,513 @@ begin
       Q => qspo_int(9),
       R => '0'
     );
-ram_reg_0_255_0_0: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_0_0: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000038000"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(0),
       O => \^spo\(0),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_10_10: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_10_10: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000018200"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(10),
       O => \^spo\(10),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_11_11: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_11_11: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000018200"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(11),
       O => \^spo\(11),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_12_12: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_12_12: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000019200"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(12),
       O => \^spo\(12),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_13_13: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_13_13: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000018200"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(13),
       O => \^spo\(13),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_14_14: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_14_14: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000019200"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(14),
       O => \^spo\(14),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_15_15: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_15_15: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000018200"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(15),
       O => \^spo\(15),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_16_16: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_16_16: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"000000000000869E"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(16),
       O => \^spo\(16),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_17_17: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_17_17: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000002498"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(17),
       O => \^spo\(17),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_18_18: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_18_18: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000001966"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(18),
       O => \^spo\(18),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_19_19: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_19_19: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"000000000000FFFF"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(19),
       O => \^spo\(19),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_1_1: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_1_1: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000008200"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(1),
       O => \^spo\(1),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_20_20: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_20_20: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000000000"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(20),
       O => \^spo\(20),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_21_21: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_21_21: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000019214"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(21),
       O => \^spo\(21),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_22_22: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_22_22: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000001010"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(22),
       O => \^spo\(22),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_23_23: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_23_23: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000000244"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(23),
       O => \^spo\(23),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_24_24: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_24_24: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"000000000001FFD4"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(24),
       O => \^spo\(24),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_25_25: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_25_25: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000000000"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(25),
       O => \^spo\(25),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_26_26: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_26_26: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000012DD4"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(26),
       O => \^spo\(26),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_27_27: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_27_27: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000032DD4"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(27),
       O => \^spo\(27),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_28_28: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_28_28: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000010000"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(28),
       O => \^spo\(28),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_29_29: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_29_29: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"000000000000E3AB"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(29),
       O => \^spo\(29),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_2_2: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_2_2: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"000000000000CB68"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(2),
       O => \^spo\(2),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_30_30: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_30_30: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000000000"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(30),
       O => \^spo\(30),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_31_31: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_31_31: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000002DD4"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(31),
       O => \^spo\(31),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_3_3: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_3_3: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"000000000001A200"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(3),
       O => \^spo\(3),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_4_4: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_4_4: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"000000000003822A"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(4),
       O => \^spo\(4),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_5_5: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_5_5: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000019200"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(5),
       O => \^spo\(5),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_6_6: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_6_6: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"000000000001822A"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(6),
       O => \^spo\(6),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_7_7: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_7_7: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000018200"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(7),
       O => \^spo\(7),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_8_8: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_8_8: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000018200"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(8),
       O => \^spo\(8),
       WCLK => clk,
       WE => we
     );
-ram_reg_0_255_9_9: unisim.vcomponents.RAM256X1S
+ram_reg_0_63_9_9: unisim.vcomponents.RAM64X1S
     generic map(
-      INIT => X"0000000000000000000000000000000000000000000000000000000000000000"
+      INIT => X"0000000000018200"
     )
         port map (
-      A(7 downto 0) => a(7 downto 0),
+      A0 => a(0),
+      A1 => a(1),
+      A2 => a(2),
+      A3 => a(3),
+      A4 => a(4),
+      A5 => a(5),
       D => d(9),
       O => \^spo\(9),
       WCLK => clk,
@@ -814,7 +974,7 @@ entity Inst_mem_dist_mem_gen_v8_0_10_synth is
     clk : in STD_LOGIC;
     d : in STD_LOGIC_VECTOR ( 31 downto 0 );
     we : in STD_LOGIC;
-    a : in STD_LOGIC_VECTOR ( 7 downto 0 )
+    a : in STD_LOGIC_VECTOR ( 5 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of Inst_mem_dist_mem_gen_v8_0_10_synth : entity is "dist_mem_gen_v8_0_10_synth";
@@ -824,7 +984,7 @@ architecture STRUCTURE of Inst_mem_dist_mem_gen_v8_0_10_synth is
 begin
 \gen_sp_ram.spram_inst\: entity work.Inst_mem_spram
      port map (
-      a(7 downto 0) => a(7 downto 0),
+      a(5 downto 0) => a(5 downto 0),
       clk => clk,
       d(31 downto 0) => d(31 downto 0),
       spo(31 downto 0) => spo(31 downto 0),
@@ -837,9 +997,9 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity Inst_mem_dist_mem_gen_v8_0_10 is
   port (
-    a : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    a : in STD_LOGIC_VECTOR ( 5 downto 0 );
     d : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    dpra : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    dpra : in STD_LOGIC_VECTOR ( 5 downto 0 );
     clk : in STD_LOGIC;
     we : in STD_LOGIC;
     i_ce : in STD_LOGIC;
@@ -856,11 +1016,11 @@ entity Inst_mem_dist_mem_gen_v8_0_10 is
     qdpo : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   attribute C_ADDR_WIDTH : integer;
-  attribute C_ADDR_WIDTH of Inst_mem_dist_mem_gen_v8_0_10 : entity is 8;
+  attribute C_ADDR_WIDTH of Inst_mem_dist_mem_gen_v8_0_10 : entity is 6;
   attribute C_DEFAULT_DATA : string;
   attribute C_DEFAULT_DATA of Inst_mem_dist_mem_gen_v8_0_10 : entity is "0";
   attribute C_DEPTH : integer;
-  attribute C_DEPTH of Inst_mem_dist_mem_gen_v8_0_10 : entity is 256;
+  attribute C_DEPTH of Inst_mem_dist_mem_gen_v8_0_10 : entity is 64;
   attribute C_ELABORATION_DIR : string;
   attribute C_ELABORATION_DIR of Inst_mem_dist_mem_gen_v8_0_10 : entity is "./";
   attribute C_FAMILY : string;
@@ -1028,7 +1188,7 @@ GND: unisim.vcomponents.GND
     );
 \synth_options.dist_mem_inst\: entity work.Inst_mem_dist_mem_gen_v8_0_10_synth
      port map (
-      a(7 downto 0) => a(7 downto 0),
+      a(5 downto 0) => a(5 downto 0),
       clk => clk,
       d(31 downto 0) => d(31 downto 0),
       spo(31 downto 0) => spo(31 downto 0),
@@ -1041,7 +1201,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity Inst_mem is
   port (
-    a : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    a : in STD_LOGIC_VECTOR ( 5 downto 0 );
     d : in STD_LOGIC_VECTOR ( 31 downto 0 );
     clk : in STD_LOGIC;
     we : in STD_LOGIC;
@@ -1092,11 +1252,11 @@ architecture STRUCTURE of Inst_mem is
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of U0 : label is "true";
   attribute c_addr_width : integer;
-  attribute c_addr_width of U0 : label is 8;
+  attribute c_addr_width of U0 : label is 6;
   attribute c_default_data : string;
   attribute c_default_data of U0 : label is "0";
   attribute c_depth : integer;
-  attribute c_depth of U0 : label is 256;
+  attribute c_depth of U0 : label is 64;
   attribute c_elaboration_dir : string;
   attribute c_elaboration_dir of U0 : label is "./";
   attribute c_has_i_ce : integer;
@@ -1130,11 +1290,11 @@ architecture STRUCTURE of Inst_mem is
 begin
 U0: entity work.Inst_mem_dist_mem_gen_v8_0_10
      port map (
-      a(7 downto 0) => a(7 downto 0),
+      a(5 downto 0) => a(5 downto 0),
       clk => clk,
       d(31 downto 0) => d(31 downto 0),
       dpo(31 downto 0) => NLW_U0_dpo_UNCONNECTED(31 downto 0),
-      dpra(7 downto 0) => B"00000000",
+      dpra(5 downto 0) => B"000000",
       i_ce => '1',
       qdpo(31 downto 0) => NLW_U0_qdpo_UNCONNECTED(31 downto 0),
       qdpo_ce => '1',

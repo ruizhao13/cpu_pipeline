@@ -14,8 +14,8 @@ set_property webtalk.parent_dir D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.cac
 set_property parent.project_path D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-read_ip -quiet d:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem.xci
-set_property is_locked true [get_files d:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem.xci]
+read_ip -quiet D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem.xci
+set_property is_locked true [get_files D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem.xci]
 
 foreach dcp [get_files -quiet -all *.dcp] {
   set_property used_in_implementation false $dcp
@@ -32,44 +32,44 @@ write_checkpoint -force -noxdef data_mem.dcp
 catch { report_utilization -file data_mem_utilization_synth.rpt -pb data_mem_utilization_synth.pb }
 
 if { [catch {
-  file copy -force D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.runs/data_mem_synth_1/data_mem.dcp d:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem.dcp
+  file copy -force D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.runs/data_mem_synth_1/data_mem.dcp D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem.dcp
 } _RESULT ] } { 
   send_msg_id runtcl-3 error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
-  write_verilog -force -mode synth_stub d:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_stub.v
+  write_verilog -force -mode synth_stub D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_stub.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode synth_stub d:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_stub.vhdl
+  write_vhdl -force -mode synth_stub D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_stub.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_verilog -force -mode funcsim d:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_sim_netlist.v
+  write_verilog -force -mode funcsim D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_sim_netlist.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode funcsim d:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_sim_netlist.vhdl
+  write_vhdl -force -mode funcsim D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_sim_netlist.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if {[file isdir D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.ip_user_files/ip/data_mem]} {
   catch { 
-    file copy -force d:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_stub.v D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.ip_user_files/ip/data_mem
+    file copy -force D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_stub.v D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.ip_user_files/ip/data_mem
   }
 }
 
 if {[file isdir D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.ip_user_files/ip/data_mem]} {
   catch { 
-    file copy -force d:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_stub.vhdl D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.ip_user_files/ip/data_mem
+    file copy -force D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_stub.vhdl D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.ip_user_files/ip/data_mem
   }
 }

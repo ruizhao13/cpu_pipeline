@@ -1,10 +1,10 @@
 // Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2016.2 (win64) Build 1577090 Thu Jun  2 16:32:40 MDT 2016
-// Date        : Sun Jun 03 10:01:20 2018
+// Date        : Mon Jun 04 19:00:36 2018
 // Host        : DESKTOP-RONFFCB running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               d:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_sim_netlist.v
+//               D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_sim_netlist.v
 // Design      : data_mem
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -1129,9 +1129,9 @@ module data_mem_sdpram
         .R(1'b0));
   (* METHODOLOGY_DRC_VIOS = "" *) 
   RAM64M #(
-    .INIT_A(64'h0000000000000000),
-    .INIT_B(64'h0000000000000000),
-    .INIT_C(64'h0000000000000000),
+    .INIT_A(64'h0000000000600000),
+    .INIT_B(64'h0000000000600000),
+    .INIT_C(64'h0000000000100000),
     .INIT_D(64'h0000000000000000)) 
     ram_reg_0_63_0_2
        (.ADDRA(dpra[5:0]),
@@ -1324,7 +1324,7 @@ module data_mem_sdpram
   (* METHODOLOGY_DRC_VIOS = "" *) 
   RAM64M #(
     .INIT_A(64'h0000000000000000),
-    .INIT_B(64'h0000000000000000),
+    .INIT_B(64'h0000000000100000),
     .INIT_C(64'h0000000000000000),
     .INIT_D(64'h0000000000000000)) 
     ram_reg_0_63_3_5

@@ -1,10 +1,10 @@
 -- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2016.2 (win64) Build 1577090 Thu Jun  2 16:32:40 MDT 2016
--- Date        : Sun Jun 03 10:01:20 2018
+-- Date        : Mon Jun 04 19:00:36 2018
 -- Host        : DESKTOP-RONFFCB running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               d:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_sim_netlist.vhdl
+--               D:/study/COD/lab/lab7_cpu_pipeline/lab7/lab7.srcs/sources_1/ip/data_mem/data_mem_sim_netlist.vhdl
 -- Design      : data_mem
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -1091,9 +1091,9 @@ begin
     );
 ram_reg_0_63_0_2: unisim.vcomponents.RAM64M
     generic map(
-      INIT_A => X"0000000000000000",
-      INIT_B => X"0000000000000000",
-      INIT_C => X"0000000000000000",
+      INIT_A => X"0000000000600000",
+      INIT_B => X"0000000000600000",
+      INIT_C => X"0000000000100000",
       INIT_D => X"0000000000000000"
     )
         port map (
@@ -1309,7 +1309,7 @@ ram_reg_0_63_31_31: unisim.vcomponents.RAM64X1D
 ram_reg_0_63_3_5: unisim.vcomponents.RAM64M
     generic map(
       INIT_A => X"0000000000000000",
-      INIT_B => X"0000000000000000",
+      INIT_B => X"0000000000100000",
       INIT_C => X"0000000000000000",
       INIT_D => X"0000000000000000"
     )
