@@ -37,7 +37,7 @@ module REG_FILE(
     assign RD2 = regfile[A2];
 
     integer i;
-    always @(posedge clk)begin
+    always @(negedge clk)begin
       
       if ( ~rst_n ) begin
         regfile[0] <= 0;
