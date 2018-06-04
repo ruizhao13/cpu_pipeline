@@ -30,8 +30,8 @@ module hazard(
     input [4:0] RtE,
     input [4:0] RsD,
     input [4:0] RtD,
-    output [2:0] ForwardAE,
-    output [2:0] ForwardBE,
+    output reg [2:0] ForwardAE,
+    output reg [2:0] ForwardBE,
     output StallF,
     output StallD,
     output FlushE
@@ -48,9 +48,9 @@ module hazard(
     end
     always @(*)
     begin
-      if ((RdE != 0) & (RdE == WriteRegM) & RegWriteM) begin
+      if ((RtE != 0) & (RtE == WriteRegM) & RegWriteM) begin
         ForwardBE = 10;
-      end else if ((RdE != 0) & (RdE == WriteRegW) & RegWriteW) begin
+      end else if ((RtE != 0) & (RtE == WriteRegW) & RegWriteW) begin
         ForwardBE = 01;
       end else begin
         ForwardBE = 00;
@@ -58,8 +58,9 @@ module hazard(
     end
     wire lwstall;
     assign lwstall = ((RsD == RtE) | (RtD == RtE)) & MemtoRegE;
-    assign StallF = StallD = FlushE =lwstall;
-
+    assign StallF = lwstall;
+    assign StallD = lwstall;
+    assign FlushE = lwstall;
 
 
 
