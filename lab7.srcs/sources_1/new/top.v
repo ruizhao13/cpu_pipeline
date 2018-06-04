@@ -129,10 +129,16 @@ module top(
     assign SignImmD = {{16{InstrD[15]}}, InstrD[15:0]};
     always@(posedge clk)
     begin
-      if (~StallD) begin
+      if (PCSrcD) begin
+        PCPlus4D <= 0;
+        InstrD <= 0;
+      end else begin
+        if (~StallD) begin
         PCPlus4D <= PCPlus4F;
         InstrD <= InstrF;
       end
+      end
+      
     end
 
     wire [31:0]PCBranchD;
