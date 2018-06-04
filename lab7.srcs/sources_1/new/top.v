@@ -26,7 +26,7 @@ module top(
     );
     wire StallF, StallD, ForwardAD, ForwardBD;
     wire [1:0] ForwardAE, ForwardBE;
-
+    wire FlushE;
 
     /* Fetch section */
     wire [31:0] PC, PCPlus4F;
@@ -227,5 +227,31 @@ module top(
       WriteRegW <= WriteRegM;
     end
     assign ResultW = MemtoRegW ? ReadDataW : ALUOutM;
+
+
+
+    hazard u_hazard(
+    .WriteRegM(WriteRegM),
+    .WriteRegW(WriteRegW),
+    .MemtoRegE(MemtoRegE),
+    .MemtoRegM(MemtoRegM),
+    .RegWriteM(RegWriteM),
+    .RegWriteW(RegWriteW),
+    .RegWriteE(RegWriteE),
+    .WriteRegE(WriteRegE),
+    .BranchD(BranchD),
+    .RsE(RsE),
+    .RtE(RtE),
+    .RsD(RsD),
+    .RtD(RtD),
+    .ForwardAE(ForwardAE),
+    .ForwardBE(ForwardBE),
+    .ForwardAD(ForwardAD),
+    .ForwardBD(ForwardBD),
+    .StallF(StallF),
+    .StallD(StallD),
+    .FlushE(FlushE)
+    );
+
 
 endmodule
