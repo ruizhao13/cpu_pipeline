@@ -29,7 +29,7 @@ module control(
     output reg [5:0] ALUControl,
     output reg ALUSrc,
     output reg RegDst,
-    output reg Branch,
+    output reg [2:0] Branch,
     output reg Jump
     );
 
@@ -107,7 +107,7 @@ parameter    IS_POSIT = 6'b111111;
               RegWrite <= 0; 
               RegDst <= 1'b0;//no use
               ALUSrc <= 1'b0;
-              Branch <= 1;
+              Branch <= 3'b001;
               MemWrite <= 1'b0;
               MemtoReg <= 1'b0;//no use
               ALUControl <= A_ADD;
@@ -123,7 +123,7 @@ parameter    IS_POSIT = 6'b111111;
               ALUControl <= IS_POSIT;
               
 
-              Branch <= 1;
+              Branch <= 3'b010;
               Jump <= 0;
               
           end  
