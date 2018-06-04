@@ -29,7 +29,7 @@ module top(
     wire FlushE;
 
     /* Fetch section */
-    wire [31:0] PC, PCPlus4F;
+    wire [31:0] PC_NEW, PCPlus4F;
     reg [31:0] PCF;
     /* Decode segment */
     reg RegWriteE,RegWriteM,RegWriteW;
@@ -45,7 +45,7 @@ module top(
     wire [2:0]ALUControlD;
     wire ALUSrcD;
     wire RegDstD;
-    wire BranchD;
+    wire [2:0] BranchD;
     /* Excute segment */
 
     /* Memory segment */
@@ -59,11 +59,11 @@ module top(
 
 
     /* Fetch section */
-    assign PC = PCSrcD ? PCBranchD : PCPlus4F;
+    assign PC_NEW = JumpD ? {PCPlus4F[31:28], InstrD[25:0], 2'b00} :(PCSrcD ? PCBranchD : PCPlus4F);
     always @(posedge clk)
     begin
       if (~StallF) begin
-        PCF <= PC;
+        PCF <= PC_NEW;
       end
     end
     assign PCPlus4F = PCF + 4;
@@ -91,13 +91,33 @@ module top(
     .ALUControl(ALUControlD),
     .ALUSrc(ALUSrcD),
     .RegDst(RegDstD),
-    .Branch(BranchD)
+    .Branch(BranchD),
+    .Jump(JumpD)
     );
     
     wire EqualD;
     wire PCSrcD;
     wire [31:0] reg_rd1D, reg_rd2D;
+    /*need changed*/
     assign PCSrcD = BranchD & EqualD;
+    alwasys @(*)
+    begin
+      if (BranchD == 3'b000) begin
+        PCSrcD = 0;
+      end else if (BranchD == 3'b001) begin
+        PCSrcD = EqualD;
+      end else if (BranchD == 3'b010) begin
+        PCSrcD = (EqualD_a > 0) ? 1 : 0;
+      end else if () begin
+        
+      end else if (BranchD == 3'b111) begin
+        //jump
+        PCSrcD = 1;
+      end begin
+        
+      end
+    end
+    /*need change*/
     wire [31:0] EqualD_a, EqualD_b;
     assign EqualD_a = ForwardAD ? ALUOutM : reg_rd1D;
     assign EqualD_b = ForwardBD ? ALUOutM : reg_rd2D;
@@ -119,7 +139,7 @@ module top(
 
     wire[4:0]RsD, RtD, RdD;
     wire[31:0] SignImmD;
-
+    wire JumpD;
     
 
     assign RsD = InstrD[25:21];
@@ -129,7 +149,7 @@ module top(
     assign SignImmD = {{16{InstrD[15]}}, InstrD[15:0]};
     always@(posedge clk)
     begin
-      if (PCSrcD) begin
+      if (PCSrcD | JumpD) begin
         PCPlus4D <= 0;
         InstrD <= 0;
       end else begin

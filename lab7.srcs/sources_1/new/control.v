@@ -130,17 +130,14 @@ parameter    IS_POSIT = 6'b111111;
 
         JUMP:
           begin
-              RegDst <= 1'b0;//no use
               RegWrite <= 0; 
-              ALUSrc <= 1'b1;
+              RegDst <= 1'b0;//no use
+              ALUSrc <= 1'b0;//no use
               MemWrite <= 1'b0;
               MemtoReg <= 1'b0;//no use
-              ALUControl <= IS_POSIT;
-              
-
-              Branch <= 1;
+              ALUControl <= A_ADD;//no use
+              Branch <= 3'b111; //no use
               Jump <= 1;
-              
           end
         default: ;
       endcase
