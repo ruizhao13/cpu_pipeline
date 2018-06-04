@@ -67,7 +67,7 @@ module hazard(
     assign ForwardBD = (RtD != 0) & (RtD == WriteRegM) & RegWriteM;
 
     wire branchstall;
-    assign branchstall = ( (BranchD & RegWriteE & (WriteRegE == RsD | WriteRegE == RtD)) | (BranchD & MemtoRegM & (WriteRegM == RsD | WriteRegM == RtD0)) );
+    assign branchstall = ( (BranchD & RegWriteE & (WriteRegE == RsD | WriteRegE == RtD)) | (BranchD & MemtoRegM & (WriteRegM == RsD | WriteRegM == RtD)) );
 
     wire lwstall;
     assign lwstall = ((RsD == RtE) | (RtD == RtE)) & MemtoRegE;
