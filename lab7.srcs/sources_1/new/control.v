@@ -22,7 +22,7 @@
 
 module control(
     input [5:0]Op,
-    input [4:0]Funct,
+    input [5:0]Funct,
     output reg RegWrite,
     output reg MemtoReg,
     output reg MemWrite,

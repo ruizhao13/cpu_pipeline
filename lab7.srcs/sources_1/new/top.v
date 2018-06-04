@@ -166,7 +166,7 @@ module top(
     end
     end
 
-    assign PCBranchD = SignImmD<<2 + PCPlus4D;
+    assign PCBranchD = (SignImmD<<2) + PCPlus4D;
 
     /* Excute segment */
 
@@ -178,7 +178,9 @@ module top(
       if (FlushE) begin
         RegWriteE <= 0;
         MemWriteE <= 0;
-        
+        RsE <= 0;
+        RtE <= 0;
+        RdE <= 0;
       end else begin
         RegWriteE <= RegWriteD;
         MemtoRegE <= MemtoRegD;
@@ -229,7 +231,6 @@ module top(
       .dpo(ReadDataM)    // output wire [31 : 0] dpo
     );
     reg[31:0] WriteRegM;
-    wire [31:0] data_mem_out;
     always@(posedge clk)
     begin
       RegWriteM <= RegWriteE;
@@ -245,13 +246,13 @@ module top(
     /**/
     always@(posedge clk)
     begin
-      ReadDataW <= data_mem_out;
+      ReadDataW <= ReadDataM;
       RegWriteW <= RegWriteM;
       MemtoRegW <= MemtoRegM;
       ALUOutW <= ALUOutM;
       WriteRegW <= WriteRegM;
     end
-    assign ResultW = MemtoRegW ? ReadDataW : ALUOutM;
+    assign ResultW = MemtoRegW ? ReadDataW : ALUOutW;
 
 
 

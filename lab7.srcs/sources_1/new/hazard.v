@@ -29,7 +29,7 @@ module hazard(
     input RegWriteW,
     input RegWriteE,
     input [4:0] WriteRegE,
-    input BranchD,
+    input [2:0] BranchD,
     input [4:0] RsE,
     input [4:0] RtE,
     input [4:0] RsD,
@@ -65,6 +65,7 @@ module hazard(
 
     assign ForwardAD = (RsD != 0) & (RsD == WriteRegM) & RegWriteM;
     assign ForwardBD = (RtD != 0) & (RtD == WriteRegM) & RegWriteM;
+    
 
     wire branchstall;
     assign branchstall = ( (BranchD & RegWriteE & (WriteRegE == RsD | WriteRegE == RtD)) | (BranchD & MemtoRegM & (WriteRegM == RsD | WriteRegM == RtD)) );

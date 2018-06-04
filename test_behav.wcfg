@@ -11,18 +11,18 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="90000000fs"></ZoomStartTime>
-      <ZoomEndTime time="250600001fs"></ZoomEndTime>
-      <Cursor1Time time="5000000000000fs"></Cursor1Time>
+      <ZoomStartTime time="1766270000000fs"></ZoomStartTime>
+      <ZoomEndTime time="1766431200001fs"></ZoomEndTime>
+      <Cursor1Time time="1766314600000fs"></Cursor1Time>
    </zoom_setting>
-   <WVObjectSize size="29" />
+   <WVObjectSize size="63" />
    <wvobject fp_name="/test/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject fp_name="/test/rst_n" type="logic">
-      <obj_property name="ElementShortName">rst_n</obj_property>
-      <obj_property name="ObjectShortName">rst_n</obj_property>
+   <wvobject fp_name="/test/test/u_REG_FILE/regfile" type="array">
+      <obj_property name="ElementShortName">regfile[0:31][31:0]</obj_property>
+      <obj_property name="ObjectShortName">regfile[0:31][31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/test/test/u_ins_mem/inst/ram_data" type="array">
       <obj_property name="ElementShortName">ram_data[63:0][31:0]</obj_property>
@@ -35,19 +35,10 @@
    <wvobject fp_name="/test/test/u_data_mem/inst/ram_data" type="array">
       <obj_property name="ElementShortName">ram_data[255:0][31:0]</obj_property>
       <obj_property name="ObjectShortName">ram_data[255:0][31:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject fp_name="/test/test/PCF" type="array">
       <obj_property name="ElementShortName">PCF[31:0]</obj_property>
       <obj_property name="ObjectShortName">PCF[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test/test/InstrD" type="array">
-      <obj_property name="ElementShortName">InstrD[31:0]</obj_property>
-      <obj_property name="ObjectShortName">InstrD[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test/test/InstrF" type="array">
-      <obj_property name="ElementShortName">InstrF[31:0]</obj_property>
-      <obj_property name="ObjectShortName">InstrF[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/test/test/u_ins_mem/spo" type="array">
       <obj_property name="ElementShortName">spo[31:0]</obj_property>
@@ -60,22 +51,6 @@
    <wvobject fp_name="/test/test/u_ins_mem/a" type="array">
       <obj_property name="ElementShortName">a[5:0]</obj_property>
       <obj_property name="ObjectShortName">a[5:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test/test/u_ins_mem/clk" type="logic">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test/test/u_REG_FILE/regfile[8]" type="array">
-      <obj_property name="ElementShortName">[8][31:0]</obj_property>
-      <obj_property name="ObjectShortName">[8][31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test/test/u_REG_FILE/regfile[13]" type="array">
-      <obj_property name="ElementShortName">[13][31:0]</obj_property>
-      <obj_property name="ObjectShortName">[13][31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test/test/u_REG_FILE/regfile" type="array">
-      <obj_property name="ElementShortName">regfile[0:31][31:0]</obj_property>
-      <obj_property name="ObjectShortName">regfile[0:31][31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/test/test/u_data_mem/a" type="array">
       <obj_property name="ElementShortName">a[7:0]</obj_property>
@@ -101,9 +76,13 @@
       <obj_property name="ElementShortName">ALUOutE[31:0]</obj_property>
       <obj_property name="ObjectShortName">ALUOutE[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/test/test/u_ALU/alu_out" type="array">
-      <obj_property name="ElementShortName">alu_out[31:0]</obj_property>
-      <obj_property name="ObjectShortName">alu_out[31:0]</obj_property>
+   <wvobject fp_name="/test/test/ALUOutW" type="array">
+      <obj_property name="ElementShortName">ALUOutW[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ALUOutW[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/ResultW" type="array">
+      <obj_property name="ElementShortName">ResultW[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ResultW[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/test/test/u_ALU/alu_a" type="array">
       <obj_property name="ElementShortName">alu_a[31:0]</obj_property>
@@ -116,6 +95,21 @@
    <wvobject fp_name="/test/test/u_ALU/alu_op" type="array">
       <obj_property name="ElementShortName">alu_op[5:0]</obj_property>
       <obj_property name="ObjectShortName">alu_op[5:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/ALUControlE" type="array">
+      <obj_property name="ElementShortName">ALUControlE[5:0]</obj_property>
+      <obj_property name="ObjectShortName">ALUControlE[5:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/ALUControlD" type="array">
+      <obj_property name="ElementShortName">ALUControlD[5:0]</obj_property>
+      <obj_property name="ObjectShortName">ALUControlD[5:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_control/ALUControl" type="array">
+      <obj_property name="ElementShortName">ALUControl[5:0]</obj_property>
+      <obj_property name="ObjectShortName">ALUControl[5:0]</obj_property>
       <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/test/test/reg_rd1D" type="array">
@@ -133,5 +127,156 @@
    <wvobject fp_name="/test/test/reg_rd2E" type="array">
       <obj_property name="ElementShortName">reg_rd2E[31:0]</obj_property>
       <obj_property name="ObjectShortName">reg_rd2E[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/InstrF" type="array">
+      <obj_property name="ElementShortName">InstrF[31:0]</obj_property>
+      <obj_property name="ObjectShortName">InstrF[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/InstrD" type="array">
+      <obj_property name="ElementShortName">InstrD[31:0]</obj_property>
+      <obj_property name="ObjectShortName">InstrD[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_REG_FILE/regfile[8]" type="array">
+      <obj_property name="ElementShortName">[8][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[8][31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_REG_FILE/regfile[9]" type="array">
+      <obj_property name="ElementShortName">[9][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[9][31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_REG_FILE/regfile[10]" type="array">
+      <obj_property name="ElementShortName">[10][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[10][31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_REG_FILE/regfile[11]" type="array">
+      <obj_property name="ElementShortName">[11][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[11][31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_REG_FILE/regfile[12]" type="array">
+      <obj_property name="ElementShortName">[12][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[12][31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_REG_FILE/regfile[13]" type="array">
+      <obj_property name="ElementShortName">[13][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[13][31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_data_mem/inst/ram_data[0]" type="array">
+      <obj_property name="ElementShortName">[0][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[0][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_data_mem/inst/ram_data[1]" type="array">
+      <obj_property name="ElementShortName">[1][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[1][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_data_mem/inst/ram_data[2]" type="array">
+      <obj_property name="ElementShortName">[2][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[2][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_data_mem/inst/ram_data[3]" type="array">
+      <obj_property name="ElementShortName">[3][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[3][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_data_mem/inst/ram_data[4]" type="array">
+      <obj_property name="ElementShortName">[4][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[4][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_data_mem/inst/ram_data[5]" type="array">
+      <obj_property name="ElementShortName">[5][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[5][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/PCSrcD" type="logic">
+      <obj_property name="ElementShortName">PCSrcD</obj_property>
+      <obj_property name="ObjectShortName">PCSrcD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/EqualD_a" type="array">
+      <obj_property name="ElementShortName">EqualD_a[31:0]</obj_property>
+      <obj_property name="ObjectShortName">EqualD_a[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/FlushE" type="logic">
+      <obj_property name="ElementShortName">FlushE</obj_property>
+      <obj_property name="ObjectShortName">FlushE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/ReadDataM" type="array">
+      <obj_property name="ElementShortName">ReadDataM[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ReadDataM[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/ReadDataW" type="array">
+      <obj_property name="ElementShortName">ReadDataW[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ReadDataW[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_ins_mem/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_REG_FILE/regfile[8]" type="array">
+      <obj_property name="ElementShortName">[8][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[8][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/SrcBE" type="array">
+      <obj_property name="ElementShortName">SrcBE[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SrcBE[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/SrcAE" type="array">
+      <obj_property name="ElementShortName">SrcAE[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SrcAE[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/rst_n" type="logic">
+      <obj_property name="ElementShortName">rst_n</obj_property>
+      <obj_property name="ObjectShortName">rst_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/ALUSrcE" type="logic">
+      <obj_property name="ElementShortName">ALUSrcE</obj_property>
+      <obj_property name="ObjectShortName">ALUSrcE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/SignImmD" type="array">
+      <obj_property name="ElementShortName">SignImmD[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SignImmD[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/SignImmE" type="array">
+      <obj_property name="ElementShortName">SignImmE[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SignImmE[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/MemtoRegW" type="logic">
+      <obj_property name="ElementShortName">MemtoRegW</obj_property>
+      <obj_property name="ObjectShortName">MemtoRegW</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/MemtoRegD" type="logic">
+      <obj_property name="ElementShortName">MemtoRegD</obj_property>
+      <obj_property name="ObjectShortName">MemtoRegD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_control/MemtoReg" type="logic">
+      <obj_property name="ElementShortName">MemtoReg</obj_property>
+      <obj_property name="ObjectShortName">MemtoReg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/u_control/Op" type="array">
+      <obj_property name="ElementShortName">Op[5:0]</obj_property>
+      <obj_property name="ObjectShortName">Op[5:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/PC_NEW" type="array">
+      <obj_property name="ElementShortName">PC_NEW[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_NEW[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/PCPlus4F" type="array">
+      <obj_property name="ElementShortName">PCPlus4F[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PCPlus4F[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/PCF" type="array">
+      <obj_property name="ElementShortName">PCF[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PCF[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/PCBranchD" type="array">
+      <obj_property name="ElementShortName">PCBranchD[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PCBranchD[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test/test/PCPlus4D" type="array">
+      <obj_property name="ElementShortName">PCPlus4D[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PCPlus4D[31:0]</obj_property>
    </wvobject>
 </wave_config>
