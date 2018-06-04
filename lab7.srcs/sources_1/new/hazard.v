@@ -29,7 +29,7 @@ module hazard(
     input RegWriteW,
     input RegWriteE,
     input [4:0] WriteRegE,
-    input [2:0] BranchD,
+    input [2:0]BranchD,
     input [4:0] RsE,
     input [4:0] RtE,
     input [4:0] RsD,
