@@ -145,21 +145,30 @@ module top(
     reg [4:0]RsE,RtE,RdE;
     always @(posedge clk)
     begin
-      RegDstE <= RegDstD;
-      MemtoRegE <= MemtoRegD;
-      MemWriteE <= MemWriteD;
-      ALUControlE <= ALUControlD;
-      ALUSrcE <= ALUSrcD;
-      RegDstE <= RegDstD;
+      if (FlushE) begin
+        RegWriteE <= 0;
+        MemWriteE <= 0;
+        
+      end else begin
+        RegWriteE <= RegWriteD;
+        MemtoRegE <= MemtoRegD;
+        MemWriteE <= MemWriteD;
+        ALUControlE <= ALUControlD;
+        ALUSrcE <= ALUSrcD;
+        RegDstE <= RegDstD;
 
-      reg_rd1E <= reg_rd1D;
-      reg_rd2E <= reg_rd2E;
+        reg_rd1E <= reg_rd1D;
+        reg_rd2E <= reg_rd2E;
 
-      RsE <= RsD;
-      RtE <= RtD;
-      RdE <= RdD;
+        RsE <= RsD;
+        RtE <= RtD;
+        RdE <= RdD;
 
-      SignImmE <= SignImmD;
+        SignImmE <= SignImmD;
+      end
+    end
+    begin
+      
     end
     wire [4:0] WriteRegE;
     wire [31:0] WriteDataE;
@@ -175,6 +184,9 @@ module top(
       .alu_out(ALUOutE)
       //.Zero()
     );
+
+
+
     /* Memory segment */
     wire[31:0] ReadDataM;
     data_mem u_data_mem (

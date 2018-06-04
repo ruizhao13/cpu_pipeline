@@ -24,14 +24,20 @@ module hazard(
     input [4:0] WriteRegM,
     input [4:0] WriteRegW,
     input MemtoRegE,
+    input MemtoRegM,
     input RegWriteM,
     input RegWriteW,
+    input RegWriteE,
+    input [4:0] WriteRegE,
+    input BranchD,
     input [4:0] RsE,
     input [4:0] RtE,
     input [4:0] RsD,
     input [4:0] RtD,
     output reg [2:0] ForwardAE,
     output reg [2:0] ForwardBE,
+    output ForwardAD,
+    output ForwardBD,
     output StallF,
     output StallD,
     output FlushE
@@ -56,11 +62,18 @@ module hazard(
         ForwardBE = 00;
       end
     end
+
+    assign ForwardAD = (RsD != 0) & (RsD == WriteRegM) & RegWriteM;
+    assign ForwardBD = (RtD != 0) & (RtD == WriteRegM) & RegWriteM;
+
+    wire branchstall;
+    assign branchstall = ( (BranchD & RegWriteE & (WriteRegE == RsD | WriteRegE == RtD)) | (BranchD & MemtoRegM & (WriteRegM == RsD | WriteRegM == RtD0)) )
+
     wire lwstall;
     assign lwstall = ((RsD == RtE) | (RtD == RtE)) & MemtoRegE;
-    assign StallF = lwstall;
-    assign StallD = lwstall;
-    assign FlushE = lwstall;
+    assign StallF = lwstall | branchstall;
+    assign StallD = lwstall | branchstall;
+    assign FlushE = lwstall | branchstall;
 
 
 
