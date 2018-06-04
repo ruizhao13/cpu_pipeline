@@ -34,21 +34,25 @@ module control(
     );
 
     	
-//parameter	A_ADD	= 5'h01;
-parameter   A_ADD 	= 6'b100_000;	
-parameter	A_SUB	= 6'b100010;	
-parameter	A_AND 	= 6'b100100;
-parameter	A_OR  	= 6'b100101;
-parameter	A_XOR 	= 6'b100110;
-parameter	A_NOR   = 6'b100111;
+parameter	A_NOP	= 3'b000;	 	
+parameter   A_ADD 	= 6'b100_000;
+parameter	A_ADDU 	= 6'b100_001;	
+parameter	A_SUB	= 6'b100_010;	
+parameter 	A_SUBU	= 6'b100_011;
+parameter	A_AND 	= 6'b100_100;
+parameter	A_OR  	= 6'b100_101;
+parameter	A_XOR 	= 6'b100_110;
+parameter	A_NOR   = 6'b100_111;
+parameter 	A_SLT	= 6'b101_010;
 parameter    IS_POSIT = 6'b111111;
 
     parameter	  LW	  = 6'b100011;
     parameter	  SW	  = 6'b101011;	
-    parameter	  RTYPE	  = 6'b000000;	
+    parameter	  RTYPE	= 6'b000000;	
     parameter   ADDI  = 6'b001000;
-    parameter   BGTZ  =  6'b000111;
-    parameter   JUMP  =   6'b000010;
+    parameter   BEQ   = 6'b000100;
+    parameter   BGTZ  = 6'b000111;
+    parameter   JUMP  = 6'b000010;
     //parameter	ADDI	= 35;	
     	
     always @ (*)
@@ -56,57 +60,58 @@ parameter    IS_POSIT = 6'b111111;
       case (Op)
         LW: 
             begin
-              MemtoReg <= 1'b1;
-              MemWrite <= 1'b0;
-              Branch <= 0;
-              ALUControl <= A_ADD;
-              ALUSrc <= 1;
+              RegWrite <= 1;     
               RegDst <= 0;
-              RegWrite <= 1;
+              ALUSrc <= 1;
+              Branch <= 0;
+              MemWrite <= 1'b0;                     
+              MemtoReg <= 1'b1;
+              ALUControl <= A_ADD;
               Jump <= 0;
             end
         RTYPE:
             begin
-              
+              RegWrite <= 1;              
               RegDst <= 1;
-              RegWrite <= 1;
               ALUSrc <= 0;
+              Branch <= 0;              
               MemWrite <= 1'b0;
               MemtoReg <= 1'b0;
               ALUControl <= Funct;
-              
-
-              Branch <= 0;
               Jump <= 0;
-              
             end
         SW:
           begin
-              RegDst <= 1;//no use
               RegWrite <= 0; 
+              RegDst <= 1;//no use
               ALUSrc <= 1'b1;
+              Branch <= 0;              
               MemWrite <= 1'b1;
               MemtoReg <= 1'b0;//no use
               ALUControl <= A_ADD;
-              
-
-              Branch <= 0;
               Jump <= 0;
-              
           end
         ADDI:
           begin
-              RegDst <= 1'b0;//no use
               RegWrite <= 1; 
+              RegDst <= 1'b0;
               ALUSrc <= 1'b1;
+              Branch <= 0;
               MemWrite <= 1'b0;
               MemtoReg <= 1'b0;//no use
               ALUControl <= A_ADD;
-              
-
-              Branch <= 0;
               Jump <= 0;
-              
+          end
+        BEQ:
+          begin
+              RegWrite <= 0; 
+              RegDst <= 1'b0;//no use
+              ALUSrc <= 1'b0;
+              Branch <= 1;
+              MemWrite <= 1'b0;
+              MemtoReg <= 1'b0;//no use
+              ALUControl <= A_ADD;
+              Jump <= 0;
           end
         BGTZ:
           begin
