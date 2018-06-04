@@ -21,6 +21,34 @@
 
 
 module hazard(
-
+    input [4:0] WriteRegM,
+    input [4:0] WriteRegW,
+    input RegWriteM,
+    input RegWriteW,
+    input [4:0] RsE,
+    input [4:0] RtE,
+    output [2:0] ForwardAE,
+    output [2:0] ForwardBE,
+    output
     );
+    always @(*)
+    begin
+      if ((RsE != 0) & (RsE == WriteRegM) & RegWriteM) begin
+        ForwardAE = 10;
+      end else if ((RsE != 0) & (RsE == WriteRegW) & RegWriteW) begin
+        ForwardAE = 01;
+      end else begin
+        ForwardAE = 00;
+      end
+    end
+    always @(*)
+    begin
+      if ((RdE != 0) & (RdE == WriteRegM) & RegWriteM) begin
+        ForwardBE = 10;
+      end else if ((RdE != 0) & (RdE == WriteRegW) & RegWriteW) begin
+        ForwardBE = 01;
+      end else begin
+        ForwardBE = 00;
+      end
+    end
 endmodule

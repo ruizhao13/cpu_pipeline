@@ -85,13 +85,13 @@ module top(
     control u_control(
     .Op(InstrD[31:26]),
     .Funct(InstrD[5:0]),
-    .RegWriteD(RegWriteD),
-    .MemtoRegD(MemtoRegD),
-    .MemWriteD(MemWriteD),
-    .ALUControlD(ALUControlD),
-    .ALUSrcD(ALUSrcD),
-    .RegDstD(RegDstD),
-    .BranchD(BranchD)
+    .RegWrite(RegWriteD),
+    .MemtoReg(MemtoRegD),
+    .MemWrite(MemWriteD),
+    .ALUControl(ALUControlD),
+    .ALUSrc(ALUSrcD),
+    .RegDst(RegDstD),
+    .Branch(BranchD)
     );
     
     wire EqualD;
