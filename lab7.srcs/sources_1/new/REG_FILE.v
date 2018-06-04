@@ -43,7 +43,7 @@ module REG_FILE(
         regfile[0] <= 0;
         regfile[1] <= 0;
         for (i = 2; i < 32; i = i + 1 ) begin
-          regfile[i] <= 0;
+          regfile[i] <= 1;
         end
       end else begin
         if (WE3) begin

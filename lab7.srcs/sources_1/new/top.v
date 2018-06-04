@@ -36,14 +36,14 @@ module top(
     reg RegWriteE,RegWriteM,RegWriteW;
     reg MemtoRegE,MemtoRegM,MemtoRegW;
     reg MemWriteE,MemWriteM;
-    reg [2:0]ALUControlE;
+    reg [5:0]ALUControlE;
     reg ALUSrcE;
     reg RegDstE;
    
     wire RegWriteD;
     wire MemtoRegD;
     wire MemWriteD;
-    wire [2:0]ALUControlD;
+    wire [5:0]ALUControlD;
     wire ALUSrcD;
     wire RegDstD;
     wire [2:0] BranchD;
@@ -61,15 +61,17 @@ module top(
 
     /* Fetch section */
     reg [31:0] InstrD;
-    
+    wire [31:0] InstrF;
     wire EqualD;
     reg PCSrcD;
     wire [31:0]PCBranchD;    
     wire [31:0] reg_rd1D, reg_rd2D;
     assign PC_NEW = JumpD ? {PCPlus4F[31:28], InstrD[25:0], 2'b00} :(PCSrcD ? PCBranchD : PCPlus4F);
-    always @(posedge clk)
+    always @(posedge clk, negedge rst_n)
     begin
-      if (~StallF) begin
+      if (~rst_n) begin
+        PCF = 0;
+      end else if (~StallF) begin
         PCF <= PC_NEW;
       end
     end
@@ -77,9 +79,9 @@ module top(
 
 
     Inst_mem u_ins_mem (
-      .a(PCF[5:0]),      // input wire [5 : 0] a
+      .a(PCF[7:2]),      // input wire [5 : 0] a
       //.d(d),      // input wire [31 : 0] d
-      //.clk(clk),  // input wire clk
+      .clk(clk),  // input wire clk
       //.we(),    // input wire we
       .spo(InstrF)  // output wire [31 : 0] spo
     );
@@ -146,8 +148,11 @@ module top(
     assign RdD = InstrD[15:11];
 
     assign SignImmD = {{16{InstrD[15]}}, InstrD[15:0]};
-    always@(posedge clk)
+    always@(posedge clk, negedge rst_n)
     begin
+    if (~rst_n) begin
+      InstrD <= 0;
+    end else begin
       if (PCSrcD | JumpD) begin
         PCPlus4D <= 0;
         InstrD <= 0;
@@ -155,9 +160,10 @@ module top(
         if (~StallD) begin
         PCPlus4D <= PCPlus4F;
         InstrD <= InstrF;
-      end
+        end
       end
       
+    end
     end
 
     assign PCBranchD = SignImmD<<2 + PCPlus4D;
@@ -182,7 +188,7 @@ module top(
         RegDstE <= RegDstD;
 
         reg_rd1E <= reg_rd1D;
-        reg_rd2E <= reg_rd2E;
+        reg_rd2E <= reg_rd2D;
 
         RsE <= RsD;
         RtE <= RtD;
@@ -196,11 +202,12 @@ module top(
     end
     wire [4:0] WriteRegE;
     wire [31:0] WriteDataE;
+    wire [31:0] SrcAE, SrcBE;
     assign WriteRegE = RegDstE ? RdE : RtE;
     assign SrcAE = ForwardAE[1]?ALUOutM:(ForwardAE[0]?ResultW:reg_rd1E);
     assign WriteDataE = ForwardBE[1]?ALUOutM:(ForwardBE[0]?ResultW:reg_rd2E);
     assign SrcBE = ALUSrcE ? SignImmE : WriteDataE;
-    wire ALUOutE;
+    wire [31:0]ALUOutE;
     ALU u_ALU(
       .alu_a(SrcAE),
       .alu_b(SrcBE),
@@ -214,9 +221,9 @@ module top(
     /* Memory segment */
     wire[31:0] ReadDataM;
     data_mem u_data_mem (
-      .a(ALUOutM),        // input wire [7 : 0] a
+      .a(ALUOutM>>2),        // input wire [7 : 0] a
       .d(WriteDataM),        // input wire [31 : 0] d
-      .dpra(ALUOutM),  // input wire [7 : 0] dpra
+      .dpra(ALUOutM>>2),  // input wire [7 : 0] dpra
       .clk(clk),    // input wire clk
       .we(MemWriteM),      // input wire we
       .dpo(ReadDataM)    // output wire [31 : 0] dpo
