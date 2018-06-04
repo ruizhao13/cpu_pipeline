@@ -37,6 +37,7 @@ parameter	A_OR  	= 6'b100_101;
 parameter	A_XOR 	= 6'b100_110;
 parameter	A_NOR   = 6'b100_111;
 parameter 	A_SLT	= 6'b101_010;
+parameter 	A_SLTU	= 6'b101_011;
 parameter    IS_POSIT = 6'b111111;
 always@(*)
 begin

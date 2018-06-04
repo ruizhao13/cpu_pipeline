@@ -27,6 +27,7 @@ module top(
     wire StallF, StallD, ForwardAD, ForwardBD;
     wire [1:0] ForwardAE, ForwardBE;
     wire FlushE;
+    wire JumpD;
 
     /* Fetch section */
     wire [31:0] PC_NEW, PCPlus4F;
@@ -59,6 +60,12 @@ module top(
 
 
     /* Fetch section */
+    reg [31:0] InstrD;
+    
+    wire EqualD;
+    reg PCSrcD;
+    wire [31:0]PCBranchD;    
+    wire [31:0] reg_rd1D, reg_rd2D;
     assign PC_NEW = JumpD ? {PCPlus4F[31:28], InstrD[25:0], 2'b00} :(PCSrcD ? PCBranchD : PCPlus4F);
     always @(posedge clk)
     begin
@@ -95,12 +102,10 @@ module top(
     .Jump(JumpD)
     );
     
-    wire EqualD;
-    wire PCSrcD;
-    wire [31:0] reg_rd1D, reg_rd2D;
-    /*need changed*/
-    assign PCSrcD = BranchD & EqualD;
-    alwasys @(*)
+    wire [31:0] EqualD_a, EqualD_b;
+
+    
+    always @(*)
     begin
       if (BranchD == 3'b000) begin
         PCSrcD = 0;
@@ -108,8 +113,6 @@ module top(
         PCSrcD = EqualD;
       end else if (BranchD == 3'b010) begin
         PCSrcD = (EqualD_a > 0) ? 1 : 0;
-      end else if () begin
-        
       end else if (BranchD == 3'b111) begin
         //jump
         PCSrcD = 1;
@@ -117,12 +120,9 @@ module top(
         
       end
     end
-    /*need change*/
-    wire [31:0] EqualD_a, EqualD_b;
     assign EqualD_a = ForwardAD ? ALUOutM : reg_rd1D;
     assign EqualD_b = ForwardBD ? ALUOutM : reg_rd2D;
     assign EqualD = (EqualD_a == EqualD_b) ? 1 : 0;
-    reg [31:0] InstrD;
     reg [31:0] PCPlus4D;
 
     REG_FILE u_REG_FILE(
@@ -139,7 +139,6 @@ module top(
 
     wire[4:0]RsD, RtD, RdD;
     wire[31:0] SignImmD;
-    wire JumpD;
     
 
     assign RsD = InstrD[25:21];
@@ -161,7 +160,6 @@ module top(
       
     end
 
-    wire [31:0]PCBranchD;
     assign PCBranchD = SignImmD<<2 + PCPlus4D;
 
     /* Excute segment */
