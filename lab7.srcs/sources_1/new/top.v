@@ -22,7 +22,19 @@
 
 module top(
     input clk,
-    input rst_n
+    input rst_n,
+    input [7:0] borad_read_addr,
+    //output [31:0] borad_read_data,
+    output [1:0] an,
+    output [7:0] seg
+    );
+    wire [31:0] borad_read_data;
+    seg u_seg(
+      .clk(clk),
+      .rst_n(rst_n),
+      .value(borad_read_data[15:0]),
+      .an(an),
+      .seg(seg)
     );
     wire StallF, StallD, ForwardAD, ForwardBD;
     wire [1:0] ForwardAE, ForwardBE;
@@ -223,8 +235,7 @@ module top(
       //.Zero()
     );
 
-
-
+    
     /* Memory segment */
     wire[31:0] ReadDataM;
     data_mem u_data_mem (
@@ -235,6 +246,17 @@ module top(
       .we(MemWriteM),      // input wire we
       .dpo(ReadDataM)    // output wire [31 : 0] dpo
     );
+
+    data_mem u_data_mem2 (
+      .a(ALUOutM>>2),        // input wire [7 : 0] a
+      .d(WriteDataM),        // input wire [31 : 0] d
+      .dpra(borad_read_addr),  // input wire [7 : 0] dpra
+      .clk(clk),    // input wire clk
+      .we(MemWriteM),      // input wire we
+      .dpo(borad_read_data)    // output wire [31 : 0] dpo
+    );
+
+
     reg[31:0] WriteRegM;
     always@(posedge clk)
     begin

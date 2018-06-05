@@ -35,15 +35,15 @@ module control(
     );
 
     	
-parameter	A_NOP	= 3'b000;	 	
+parameter	  A_NOP	= 3'b000;	 	
 parameter   A_ADD 	= 6'b100_000;
-parameter	A_ADDU 	= 6'b100_001;	
-parameter	A_SUB	= 6'b100_010;	
+parameter	  A_ADDU 	= 6'b100_001;	
+parameter	  A_SUB	= 6'b100_010;	
 parameter 	A_SUBU	= 6'b100_011;
-parameter	A_AND 	= 6'b100_100;
-parameter	A_OR  	= 6'b100_101;
-parameter	A_XOR 	= 6'b100_110;
-parameter	A_NOR   = 6'b100_111;
+parameter	  A_AND 	= 6'b100_100;
+parameter	  A_OR  	= 6'b100_101;
+parameter	  A_XOR 	= 6'b100_110;
+parameter	  A_NOR   = 6'b100_111;
 parameter 	A_SLT	= 6'b101_010;
 parameter 	A_SLTU	= 6'b101_011;
 
