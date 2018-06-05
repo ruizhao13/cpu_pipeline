@@ -50,6 +50,7 @@ parameter    IS_POSIT = 6'b111111;
     parameter	  SW	  = 6'b101011;	
     parameter	  RTYPE	= 6'b000000;	
     parameter   ADDI  = 6'b001000;
+    parameter   ANDI  = 6'b001100//not done
     parameter   BEQ   = 6'b000100;
     parameter   BGTZ  = 6'b000111;
     parameter   JUMP  = 6'b000010;
@@ -100,6 +101,17 @@ parameter    IS_POSIT = 6'b111111;
               MemWrite <= 1'b0;
               MemtoReg <= 1'b0;//no use
               ALUControl <= A_ADD;
+              Jump <= 0;
+          end
+        ANDI:
+          begin
+              RegWrite <= 1; 
+              RegDst <= 1'b0;
+              ALUSrc <= 1'b1;
+              Branch <= 0;
+              MemWrite <= 1'b0;
+              MemtoReg <= 1'b0;//no use
+              ALUControl <= A_AND;
               Jump <= 0;
           end
         BEQ:
