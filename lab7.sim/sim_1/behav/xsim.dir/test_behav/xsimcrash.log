@@ -1,17 +1,19 @@
-Unable to capture context for thread 13184 in process 8832, can not generate back trace
-Unable to capture context for thread 3432 in process 8832, can not generate back trace
-Unable to capture context for thread 13776 in process 8832, can not generate back trace
-Unable to capture context for thread 5292 in process 8832, can not generate back trace
-Unable to capture context for thread 3448 in process 8832, can not generate back trace
+Unable to capture context for thread 9676 in process 2580, can not generate back trace
+Unable to capture context for thread 10716 in process 2580, can not generate back trace
+Unable to capture context for thread 11292 in process 2580, can not generate back trace
+Unable to capture context for thread 8940 in process 2580, can not generate back trace
 Exception at PC 0x00007FF9F49FF218
-Unable to capture context for thread 2416 in process 8832, can not generate back trace
-Unable to capture context for thread 13184 in process 8832, can not generate back trace
-Unable to capture context for thread 3432 in process 8832, can not generate back trace
-Unable to capture context for thread 6596 in process 8832, can not generate back trace
-Exception at PC 0x00007FF97107BB93
+Unable to capture context for thread 14052 in process 2580, can not generate back trace
+Exception at PC 0x00007FF9F49FF218
+Exception at PC 0x00007FF9F49FF218
+Exception at PC 0x00007FF9F49FF218
+Unable to capture context for thread 8964 in process 2580, can not generate back trace
+Exception at PC 0x00007FF97B28BB93
+Unable to capture context for thread 7660 in process 2580, can not generate back trace
 Printing stacktrace...
 
-Unable to capture context for thread 6596 in process 8832, can not generate back trace
+Unable to capture context for thread 9796 in process 2580, can not generate back trace
+Unable to capture context for thread 8964 in process 2580, can not generate back trace
 Exception at PC 0x00007FF9F49FF218
 Exception at PC 0x00007FF9F49FF218
 Exception at PC 0x00007FF9F49FF218
@@ -25,24 +27,21 @@ Exception at PC 0x00007FF9F49FF218
 Exception at PC 0x00007FF9F49FF218
 Exception at PC 0x00007FF9F49FF218
 Exception at PC 0x00007FF9F49FF218
-[0]  [0x00007FF97107BB93]
-[1]  [0x00007FF97107BB93]
-[2]  [0x00007FF97107B4A1]
-[3]  [0x00007FF97107B3EF]
-[4]  [0x00007FF9710619FE]
-[5]  [0x00007FF971060ED1]
-[6]  [0x00007FF971060D76]
-[7]  [0x00007FF9710079F6]
-[8]  [0x00007FF970FF7AFB]
-[9]  [0x00007FF97111E90A]
-[10]  [0x00007FF971139F87]
-[11]  [0x00007FF97113A05F]
+Exception at PC 0x00007FF9F49FF218
+Exception at PC 0x00007FF9F49FF218
+Exception at PC 0x00007FF9F49FF218
+[0]  [0x00007FF97B28BB93]
+[1]  [0x00007FF97B28BB93]
+[2]  [0x00007FF97B28B4A1]
+[3]  [0x00007FF97B28B3EF]
+[4]  [0x00007FF97B2719FE]
+[5]  [0x00007FF97B270ED1]
+[6]  [0x00007FF97B270D76]
+[7]  [0x00007FF97B2179F6]
+[8]  [0x00007FF97B207AFB]
+[9]  [0x00007FF97B32E90A]
+[10]  [0x00007FF97B349F87]
+[11]  [0x00007FF97B34A05F]
 [12] (BaseThreadInitThunk+0x14) [0x00007FF9F74E3034]
 [13] (RtlUserThreadStart+0x21) [0x00007FF9F83C1551]
 Done
-Exception at PC 0x00007FF9F49FF218
-Exception at PC 0x00007FF9F49FF218
-Exception at PC 0x00007FF9F49FF218
-Exception at PC 0x00007FF9F49FF218
-Exception at PC 0x00007FF9F49FF218
-Exception at PC 0x00007FF9F49FF218

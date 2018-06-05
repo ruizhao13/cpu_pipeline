@@ -73,6 +73,8 @@ module top(
         PCF = 0;
       end else if (~StallF) begin
         PCF <= PC_NEW;
+      end else begin
+        PCF <= PCF;
       end
     end
     assign PCPlus4F = PCF + 4;
@@ -148,24 +150,25 @@ module top(
     assign RdD = InstrD[15:11];
 
     assign SignImmD = {{16{InstrD[15]}}, InstrD[15:0]};
-    always@(posedge clk, negedge rst_n)
-    begin
-    if (~rst_n) begin
-      InstrD <= 0;
-    end else begin
-      if (PCSrcD | JumpD) begin
-        PCPlus4D <= 0;
+    
+    always @(posedge clk, negedge rst_n)begin
+      if(~rst_n)begin
         InstrD <= 0;
       end else begin
-        if (~StallD) begin
-        PCPlus4D <= PCPlus4F;
-        InstrD <= InstrF;
+        if(~StallF)begin
+          if(PCSrcD  | JumpD)begin
+            PCPlus4D <= 0;
+            InstrD <= 0;
+          end else begin
+            PCPlus4D <= PCPlus4F;
+            InstrD <= InstrF;
+          end
+        end else begin
+          PCPlus4D <= PCPlus4D;
+          InstrD <= InstrD;
         end
       end
-      
     end
-    end
-
     assign PCBranchD = (SignImmD<<2) + PCPlus4D;
 
     /* Excute segment */

@@ -44,9 +44,9 @@ module hazard(
     );
     always @(*)
     begin
-      if ((RsE != 0) & (RsE == WriteRegM) & RegWriteM) begin
+      if ((RsE != 0) && (RsE == WriteRegM) && RegWriteM) begin
         ForwardAE = 10;
-      end else if ((RsE != 0) & (RsE == WriteRegW) & RegWriteW) begin
+      end else if ((RsE != 0) && (RsE == WriteRegW) && RegWriteW) begin
         ForwardAE = 01;
       end else begin
         ForwardAE = 00;
@@ -54,27 +54,27 @@ module hazard(
     end
     always @(*)
     begin
-      if ((RtE != 0) & (RtE == WriteRegM) & RegWriteM) begin
+      if ((RtE != 0) && (RtE == WriteRegM) && RegWriteM) begin
         ForwardBE = 10;
-      end else if ((RtE != 0) & (RtE == WriteRegW) & RegWriteW) begin
+      end else if ((RtE != 0) && (RtE == WriteRegW) && RegWriteW) begin
         ForwardBE = 01;
       end else begin
         ForwardBE = 00;
       end
     end
 
-    assign ForwardAD = (RsD != 0) & (RsD == WriteRegM) & RegWriteM;
-    assign ForwardBD = (RtD != 0) & (RtD == WriteRegM) & RegWriteM;
+    assign ForwardAD = (RsD != 0) && (RsD == WriteRegM) && RegWriteM;
+    assign ForwardBD = (RtD != 0) && (RtD == WriteRegM) && RegWriteM;
     
 
     wire branchstall;
-    assign branchstall = ( (BranchD & RegWriteE & (WriteRegE == RsD | WriteRegE == RtD)) | (BranchD & MemtoRegM & (WriteRegM == RsD | WriteRegM == RtD)) );
+    assign branchstall = ( (BranchD && RegWriteE && (WriteRegE == RsD || WriteRegE == RtD)) || (BranchD && MemtoRegM && (WriteRegM == RsD || WriteRegM == RtD)) );
 
     wire lwstall;
-    assign lwstall = ((RsD == RtE) | (RtD == RtE)) & MemtoRegE;
-    assign StallF = lwstall | branchstall;
-    assign StallD = lwstall | branchstall;
-    assign FlushE = lwstall | branchstall;
+    assign lwstall = ((RsD == RtE) || (RtD == RtE)) && MemtoRegE;
+    assign StallF = lwstall || branchstall;
+    assign StallD = lwstall || branchstall;
+    assign FlushE = lwstall || branchstall;
 
 
 
