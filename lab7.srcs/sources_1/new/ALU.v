@@ -38,6 +38,10 @@ parameter	A_XOR 	= 6'b100_110;
 parameter	A_NOR   = 6'b100_111;
 parameter 	A_SLT	= 6'b101_010;
 parameter 	A_SLTU	= 6'b101_011;
+parameter	A_DIV	= 6'b011_010;
+parameter	A_DIVU	= 6'b011_011;
+
+
 parameter    IS_POSIT = 6'b111111;
 always@(*)
 begin
@@ -53,7 +57,8 @@ begin
   	A_NOR:  alu_out = ~(alu_a | alu_b);
 	A_SLT:	alu_out = (alu_a < alu_b) ? 1 : 0;
 	A_SLTU: alu_out = (alu_a < alu_b) ? 1 : 0;
-	
+	A_DIV:	alu_out = alu_a / alu_b;
+	A_DIVU:	alu_out = alu_a / alu_b;
 
 
 

@@ -28,6 +28,8 @@ module top(
     wire [1:0] ForwardAE, ForwardBE;
     wire FlushE;
     wire JumpD;
+    wire [31:0] EqualD_a, EqualD_b;
+    wire Jreg;
 
     /* Fetch section */
     wire [31:0] PC_NEW, PCPlus4F;
@@ -66,7 +68,7 @@ module top(
     reg PCSrcD;
     wire [31:0]PCBranchD;    
     wire [31:0] reg_rd1D, reg_rd2D;
-    assign PC_NEW = JumpD ? {PCPlus4F[31:28], InstrD[25:0], 2'b00} :(PCSrcD ? PCBranchD : PCPlus4F);
+    assign PC_NEW = JumpD ?(Jreg ? EqualD_a : {PCPlus4F[31:28], InstrD[25:0], 2'b00} ):(PCSrcD ? PCBranchD : PCPlus4F);
     always @(posedge clk, negedge rst_n)
     begin
       if (~rst_n) begin
@@ -103,10 +105,10 @@ module top(
     .ALUSrc(ALUSrcD),
     .RegDst(RegDstD),
     .Branch(BranchD),
-    .Jump(JumpD)
+    .Jump(JumpD),
+    .Jreg(Jreg)
     );
     
-    wire [31:0] EqualD_a, EqualD_b;
 
     
     always @(*)
